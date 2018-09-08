@@ -9,16 +9,35 @@
 import UIKit
 
 class TaskTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    
+    @IBOutlet weak var taskNameLabel: UILabel!
+    @IBOutlet weak var colpeteButton: UIButton!
+    
+    
+    var taskToDisplay : Task? {
+        didSet {
+            updateViews()
+        }
     }
+    
+    
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func updateViews() {
+        guard let task = taskToDisplay else {return}
+        taskNameLabel.text = task.taskName
+        updateColpeteLabel()
     }
+    
+    func updateColpeteLabel(){
+        //FIXME: update this label
+    }
+    
+    
+    @IBAction func isCompleteButtonTapped(_ sender: Any) {
+        
+    }
+    
 
 }
